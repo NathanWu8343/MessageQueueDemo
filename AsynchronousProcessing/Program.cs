@@ -1,5 +1,6 @@
+using AsynchronousProcessing.TaskQueue;
 
-namespace MessageQueueDemo
+namespace AsynchronousProcessing
 {
     public class Program
     {
@@ -14,6 +15,9 @@ namespace MessageQueueDemo
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            //background
+            builder.Services.AddHostedService<QueuedHostedService>();
+            builder.Services.AddSingleton<IBackgroundTaskQueue, BackgroundTaskQueue>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -24,7 +28,6 @@ namespace MessageQueueDemo
             }
 
             app.UseAuthorization();
-
 
             app.MapControllers();
 

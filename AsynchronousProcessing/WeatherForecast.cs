@@ -1,4 +1,4 @@
-namespace MessageQueueDemo
+namespace AsynchronousProcessing
 {
     public class WeatherForecast
     {
